@@ -1,5 +1,52 @@
 # businesskaartje
 
+A business card or more. Given a set of information it will show details for a person. The 
+format will change depending on the theme and context.
+
+## Supported data
+- [ ] Name
+    - [ ] Fullname
+    - [ ] Nickname
+    - [ ] Firstname
+- [ ] Description
+    - [ ] Work
+    - [ ] Hobby
+    - [ ] Personal
+- [ ] Skills / Certificates / Education
+    - [ ] name
+    - [ ] description
+    - [ ] start / finish
+    - [ ] quality (quantitative / qualitative)
+    - [ ] projects
+    - [ ] tags
+    - [ ] logo
+        - [ ] alt
+        - [ ] attribution
+- [ ] Group / Organization
+    - [ ] name
+    - [ ] tags
+    - [ ] logo
+        - [ ] alt
+        - [ ] attribution
+    - [ ] Description
+    - [ ] Location
+    - [ ] sites / social
+- [ ] Projects / Hobbies
+    - [ ] name
+    - [ ] tags
+    - [ ] pictures
+    - [ ] logo
+    - [ ] description
+    - [ ] skills
+    - [ ] sites / social
+
+## Features
+
+- [ ] import via json
+- [ ] export via json
+- [ ] qr link
+- [ ] wizard to select or enter
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
