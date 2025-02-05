@@ -1,6 +1,6 @@
 import Image from "next/image";
 import {QRCodeSVG} from 'qrcode.react';
-import { matchesGlob } from "path";
+import { ReactNode } from "react";
 
 const SKILLS = [
   {
@@ -525,7 +525,7 @@ const Projects = [
 
 const EMPLOYMENT = [
   {
-    name: "Passionate People",
+    name: "Passionate People (December 2022 - Present), Amsterdam",
     nested:{
       name: "clients",
       tags: [ "clients", "employment" ],
@@ -553,7 +553,7 @@ const EMPLOYMENT = [
     }
   },
   {
-    name: "CarNext",
+    name: "CarNext (March 2019 - November 2022), Amsterdam",
     icon: {
       image: "/carnext_logo.webp",
       attribution: "https://www.cobase.com/client-story/carnext",
@@ -569,7 +569,7 @@ const EMPLOYMENT = [
     ]
   },
   {
-    name: "Floorplanner",
+    name: "Floorplanner (March 2018 - January 2019), Amsterdam",
     icon: {
       image: "/floorplanner_logo.svg",
       attribution: "floorplanner",
@@ -583,7 +583,7 @@ const EMPLOYMENT = [
     ]
   },
   {
-    name: "Bizboard",
+    name: "Bizboard (March 2017 - February 2018), Amsterdam",
     icon: {
       image: "/bizboard_logo.png",
       attribution: "bizboard",
@@ -597,7 +597,7 @@ const EMPLOYMENT = [
     ]
   },
   {
-    name: "University of Manitoba",
+    name: "University of Manitoba (September 2013 - September 2015), Winnipeg [Manitoba, Canada]",
     icon: {
       image: "/university_manitoba.png",
       attribution: "university of manitoba",
@@ -618,7 +618,7 @@ const EMPLOYMENT = [
 ]
 
 const INLINE_SECTION_LIST_CLASSNAME = "inline-flex flex-wrap gap-x-2 list-inside list-disc text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]";
-const SECTION_LIST_CLASSNAME = "list-inside list-disc text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]";
+//const SECTION_LIST_CLASSNAME = "list-inside list-disc text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]";
 const DETAILED_SECTION_LIST_CLASSNAME = "list-inside list-none text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]";
 
 // list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]
@@ -638,7 +638,7 @@ interface ListSectionProps {
     nested?: ListSectionProps,
   }>,
   depth?: number,
-  children?: any
+  children?: ReactNode | Array<ReactNode>
 }
 
 const ListSection: React.FC<ListSectionProps> = (props) => (
@@ -662,8 +662,8 @@ const NamedSection: React.FC<ListSectionProps> = (props) => (
   </section>
 )
 const ListWithIconsSection: React.FC<ListSectionProps> = (props) => {
-  let depth = props.depth || 0;
-  let inner = (
+  const depth = props.depth || 0;
+  const inner = (
     <ul className={`${DETAILED_SECTION_LIST_CLASSNAME} pl-${depth > 0? 6: 0} ${depth > 0? "border-l-2":""}`} data-depth={depth}>
       {
         props.list.filter(item => props.filter(item.tags || [])).map(item => (
@@ -673,7 +673,7 @@ const ListWithIconsSection: React.FC<ListSectionProps> = (props) => {
                 <Image
                   aria-hidden
                   src={item.icon!.image}
-                  alt={item.icon!.alt! || item.icon?.attribution!}
+                  alt={item.icon!.alt! || item.icon!.attribution}
                   layout="fill"
                   objectFit="contain"
                   className="rounded-md"
@@ -724,7 +724,7 @@ const DetailedListSection: React.FC<ListSectionProps> = (props) => (
     </ul>
   </section>
 )
-
+const INTRO = `You can call me Chris. I'm a full stack software engineer with a solid education in computer science and many years in web-development. I'm keen on ai, people, and creating new opportunities for businesses. I boost a creative mindset and practical strategy for creating workable and extendable initiatives.`;
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] w-full overflow-hidden">
@@ -736,9 +736,7 @@ export default function Home() {
             <h2 className="text-9x1 font-[family-name:var(--font-geist-mono)]">Software Engineer</h2>
           </div>
         </div>
-        <p>You can call me Chris. I'm a full stack software engineer with a solid education in computer science 
-        and many years in web-development. I'm keen on ai, people, and creating new opportunities for businesses. I 
-        boost a creative mindset and practical strategy for creating workable and extendable initiatives.</p>
+        <p>{INTRO}</p>
         <section>
           <h3> Skills </h3>
           <ListSection name="Language + Markup" list={SKILLS} filter={tags => tags.includes("language") && (tags.includes("coding") || tags.includes("markup"))}/>
